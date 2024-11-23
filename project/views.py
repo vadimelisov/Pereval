@@ -2,7 +2,7 @@ from rest_framework.response import Response
 from rest_framework import viewsets
 from django.http import Http404
 
-
+from .models import *
 from .serializers import *
 
 
@@ -21,6 +21,7 @@ class LevelViewSet(viewsets.ModelViewSet):
 class ImagesViewSet(viewsets.ModelViewSet):
     queryset = Images.objects.all()
     serializer_class = ImagesSerializer
+
 class PerevalViewset(viewsets.ModelViewSet):
     queryset = Pereval.objects.all()
     serializer_class = PerevalSerializer
@@ -57,3 +58,11 @@ class PerevalViewset(viewsets.ModelViewSet):
                 return Response({'state': 1, 'message': 'Запись успешно изменена', })
             else:
                 return Response({'state': 0, 'message': serializer.errors})
+
+    #     @swagger_auto_schema(auto_schema=None)
+    def update(self, request, *args, **kwargs):
+        pass
+
+    #     @swagger_auto_schema(auto_schema=None)
+    def destroy(self, request, *args, **kwargs):
+        pass
